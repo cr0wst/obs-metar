@@ -1,6 +1,5 @@
-import { json } from '@sveltejs/kit';
 import type { RequestEvent } from '@sveltejs/kit';
-import { AVWX_API_KEY } from '$env/static/private';
+import { json } from '@sveltejs/kit';
 import axios from 'axios';
 
 /**
