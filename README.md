@@ -6,6 +6,6 @@ This is a small application that uses [avwx](https://avwx.rest) to get METAR inf
 
 Copy the `.env.example` to `.env` and define your API token.
 
-## Glitch Setup
+## Deploy Your Own Instance
 
-Remix the project and define your API token in the environment.
+Instructions coming soon.
