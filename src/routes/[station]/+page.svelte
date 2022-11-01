@@ -8,7 +8,7 @@
 	async function fetchMetar() {
 		const station = $page.params.station;
 		if (station) {
-			return (await axios.get(`/metar/${station}`)).data.raw;
+			return (await axios.get(`/${station}`)).data.raw;
 		}
 
 		// This shouldn't happen because of how Svelte routes things
