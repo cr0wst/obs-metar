@@ -21,7 +21,10 @@
 			}
 
 			// This shouldn't happen because of how Svelte routes things
-			return { message: 'ERROR: NO STATION', metars: [] };
+			return {
+				message: 'ERROR: NO STATIONS OR ACCESSKEY Example: ?accessKey=YOUR_KEY&stations=kcmh,ksdf',
+				metars: []
+			};
 		} catch (err) {
 			return { message: `ERROR: PROBLEM FETCHING DATA FROM AVWX`, metars: [] };
 		}
