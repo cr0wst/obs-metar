@@ -35,7 +35,7 @@
 			const response = await fetchMetars();
 			metars = response.metars;
 			message = response.message;
-		}, 10 * 100 * 60);
+		}, 10 * 1000 * 60);
 
 		const response = await fetchMetars();
 		metars = response.metars;
