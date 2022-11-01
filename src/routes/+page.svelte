@@ -6,6 +6,7 @@
 
 	const stations = $page.url.searchParams.get('stations') || null;
 	const accessKey = $page.url.searchParams.get('accessKey') || null;
+	const refreshMs = Number.parseInt($page.url.searchParams.get('refreshMs')) || 30 * 60 * 1000;
 
 	let metars = [];
 	let message = null;
@@ -35,7 +36,7 @@
 			const response = await fetchMetars();
 			metars = response.metars;
 			message = response.message;
-		}, 10 * 1000 * 60);
+		}, refreshMs);
 
 		const response = await fetchMetars();
 		metars = response.metars;
