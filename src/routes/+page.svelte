@@ -31,9 +31,17 @@
 	}
 
 	onMount(async () => {
+		const interval = setInterval(async () => {
+			const response = await fetchMetars();
+			metars = response.metars;
+			message = response.message;
+		}, 10 * 100 * 60);
+
 		const response = await fetchMetars();
 		metars = response.metars;
 		message = response.message;
+
+		return () => clearInterval(interval);
 	});
 </script>
 
