@@ -21,7 +21,6 @@
 				}
 			}
 
-			// This shouldn't happen because of how Svelte routes things
 			return {
 				message: 'ERROR: NO STATIONS OR ACCESSKEY Example: ?accessKey=YOUR_KEY&stations=kcmh,ksdf',
 				metars: []
