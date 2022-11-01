@@ -23,7 +23,7 @@
 	onMount(async () => {
 		const interval = setInterval(async () => {
 			metar = await fetchMetar();
-		}, 10000);
+		}, 10 * 100 * 60);
 		metar = await fetchMetar();
 
 		return () => clearInterval(interval);
