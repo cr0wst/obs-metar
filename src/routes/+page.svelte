@@ -6,7 +6,7 @@
 
 	const stations = $page.url.searchParams.get('stations') || null;
 	const accessKey = $page.url.searchParams.get('accessKey') || null;
-	const msgMs = Number.parseInt($page.url.searchParams.get('msgMs')) || 10;
+	const scrollSpeed = Number.parseInt($page.url.searchParams.get('scrollSpeed')) || 10;
 	const enableScrolling = $page.url.searchParams.get('enableScrolling') || false;
 	const refreshMs = Number.parseInt($page.url.searchParams.get('refreshMs')) || 30 * 60 * 1000;
 
@@ -51,7 +51,7 @@
 	<div class="metar-wrapper">MESSAGE: {message}</div>
 {:else if enableScrolling}
 	<div class="page-head__ticker">
-		<div class="msg" style="--animation-speed: {metars.length * 4 * msgMs}s">
+		<div class="msg" style="--animation-speed: {metars.length * 4 * scrollSpeed}s">
 			{#each metars.concat(metars).concat(metars).concat(metars) as metar}
 				<span>{metar.raw}</span>
 			{/each}
