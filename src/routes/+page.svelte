@@ -6,6 +6,8 @@
 
 	const stations = $page.url.searchParams.get('stations') || null;
 	const accessKey = $page.url.searchParams.get('accessKey') || null;
+	const msgMs = Number.parseInt($page.url.searchParams.get('msgMs')) || 10;
+	const enableScrolling = $page.url.searchParams.get('enableScrolling') || false;
 	const refreshMs = Number.parseInt($page.url.searchParams.get('refreshMs')) || 30 * 60 * 1000;
 
 	let metars = [];
@@ -47,8 +49,52 @@
 
 {#if message}
 	<div class="metar-wrapper">MESSAGE: {message}</div>
+{:else if enableScrolling}
+	<div class="page-head__ticker">
+		<div class="msg" style="--animation-speed: {metars.length * 4 * msgMs}s">
+			{#each metars.concat(metars).concat(metars).concat(metars) as metar}
+				<span>{metar.raw}</span>
+			{/each}
+		</div>
+	</div>
 {:else}
-	{#each metars as metar}
-		<div class="metar-wrapper">{metar.raw}</div>
-	{/each}
+	<div class="metar-wrapper">
+		{#each metars as metar}
+			<span>{metar.raw}</span>
+		{/each}
+	</div>
 {/if}
+
+<style>
+	/**
+ * Ticker
+ */
+
+	.page-head__ticker {
+		text-transform: uppercase;
+		overflow: hidden;
+	}
+
+	.msg {
+		rmargin: 0 auto;
+		white-space: nowrap;
+		overflow: hidden;
+		animation: marquee var(--animation-speed) linear infinite;
+		display: inline-block;
+	}
+
+	span {
+		padding-left: 24px;
+		/* to give a gap between messages */
+	}
+
+	@keyframes marquee {
+		0% {
+			transform: translate(0, 0);
+		}
+		100% {
+			transform: translate(-50%, 0);
+			/* changed from 100% */
+		}
+	}
+</style>
