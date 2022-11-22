@@ -50,17 +50,17 @@
 {#if message}
 	<div class="metar-wrapper">MESSAGE: {message}</div>
 {:else if enableScrolling}
-	<div class="page-head__ticker">
+	<div class="page-head__ticker metar-wrapper">
 		<div class="msg" style="--animation-speed: {metars.length * 4 * scrollSpeed}s">
 			{#each metars.concat(metars).concat(metars).concat(metars) as metar}
-				<span>{metar.raw}</span>
+				<span class="metar-entry">{metar.raw}</span>
 			{/each}
 		</div>
 	</div>
 {:else}
 	<div class="metar-wrapper">
 		{#each metars as metar}
-			<span>{metar.raw}</span>
+			<span class="metar-entry">{metar.raw}</span>
 		{/each}
 	</div>
 {/if}
